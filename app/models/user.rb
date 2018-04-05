@@ -12,4 +12,12 @@ class User < ApplicationRecord
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
   validates :name, uniqueness: true
 
+  has_many :tweets
+  has_many :replies
+  has_many :followships
+  has_many :likes
+
+  has_many :followers, through: :followships
+  has_many :followeings, through: :followships
+
 end
